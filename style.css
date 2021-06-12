@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Khula:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.overall {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('./images/background-img.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+.overall a {
+    margin-left: 70%;
+    font-size: 18px;
+}
+.overall a:hover {
+    text-decoration: underline;
+}
+.row {
+    padding-top: 18%;
+}
+
+.continue-btn {
+    background-image: linear-gradient(to right top, #890058, #bc005b, #eb1254);
+    color: #fff;
+    outline: none;
+}
+.continue-btn:hover {
+    color: #fff;
+}
+.pay-btn {
+    color: #537895;
+    border-color: #537895;
+}
+.pay-btn:hover {
+    color: #fff;
+    background-color: #537895;
+    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+}
+
+.row h3 {
+    color: #fff;
+    font-size: 3.7rem;
+    font-family: 'Khula', sans-serif;
+    line-height: 65.4px;
+    font-weight: 700;
+}
+.row p {
+    color: #fff;
+    font-size: 1.4rem;
+    width: 70%;
+}
+.datacard {
+    height: auto;
+    padding: 50px 60px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.card {
+    border: none;
+    width: 400px;
+    border-radius: 12px;
+    color: #fff;
+    background-image: linear-gradient(to right top, #280537, #56034c, #890058, #bc005b, #eb1254)
+}
+
+.number span {
+    font-size: 20px;
+    font-weight: 600
+}
+
+.cardholder,
+.expires {
+    font-weight: 600;
+    font-size: 17px
+}
+
+.name,
+.date {
+    font-size: 15px
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    .row h3 {
+        font-size: 2.3rem;
+        line-height: 40.4px;
+    }
+    .row p {
+        color: #fff;
+        font-size: 1.3rem;
+        width: 90%;
+    }
+    .datacard {
+       margin: 10px 20px;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) {
+    .overall {
+        height: 100vh;
+    }
+}
