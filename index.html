@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
 </head>
 <body>
-    <div class="overall">
+    <div class="overall section-one">
         <div class="container">
             <div class="row">
                 <div class="col-md-7 mt-5">
@@ -22,7 +22,7 @@
                 <div id="datacard-1" class="col-md-5 datacard">
                     <form action="">
                         <div class="form-group">
-                            <label for="amount">Amount</label><br />
+                            <label for="amount">Amount (USD)</label><br />
                             <input class="form-control amount" type="number" placeholder="10,000" required/> 
                             <p class="text-danger" id="amountError" style="font-size: 16px;">Please enter amount</p> 
                         </div>
@@ -31,11 +31,23 @@
                             <label for="country">Country</label><br />
                             <select class="form-control" id="country" name="country" required>
                                 <option value="--Select Country--" selected>--Select Country--</option>
-                                <option value="">United Kingdom</option>
-                                <option value="">Belarus</option>
-                                <option value="">Ghana</option>
-                                <option value="">Kenya</option>
-                                <option value="">Ukraine</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="China">China</option>
+                                <option value="Denmark">Denmark</option>
+                                <option value="France">France</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="India">India</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Russia">Russia</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="United States of America">United States of America</option>
                             </select>
                             <p class="text-danger" id="errorMsg" style="font-size: 16px;">Please select a country</p>
                         </div>
@@ -44,11 +56,16 @@
                             <label for="Bank">Bank name</label><br />
                             <select class="form-control" id="bank" name="bank" required>
                                 <option value="--Select Bank--" selected>--Select Bank--</option>
-                                <option value="">Access Bank</option>
-                                <option value="">Guaranteed Trust Bank</option>
-                                <option value="">First Bank</option>
-                                <option value="">Stanbic IBTC</option>
-                                <option value="">FCMB</option>
+                                <option value="Bank Of America">Bank Of America</option>
+                                <option value="Wells Fargo">Wells Fargo</option>
+                                <option value="Capital One">Capital One</option>
+                                <option value="Citi Bank">Citi Bank</option>
+                                <option value="JP Morgan Chase">JP Morgan Chase</option>
+                                <option value="Fifth Third Bank">Fifth Third Bank</option>
+                                <option value="HSBC Bank USA">HSBC Bank USA</option>
+                                <option value="U.S Bancorp">U.S Bancorp</option>
+                                <option value="PNC Financial Services">PNC Financial Services</option>
+                                <option value="BNP Paribas">BNP Paribas</option>
                             </select>
                             <p class="text-danger" id="bankError" style="font-size: 16px;">Please select a bank</p>
                         </div>
@@ -62,8 +79,14 @@
                     <form action="">
                         <div class="form-group">
                             <label for="account">Account Name</label><br />
-                            <input class="form-control field-input-1" type="text" placeholder="Enter account name" required/> 
+                            <input id="account-name" name="name" class="form-control field-input-1" type="text" placeholder="Enter account name" required/> 
                             <p class="text-danger" id="account-name-error" style="font-size: 16px;">Account name is required</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label><br />
+                            <input id="phone" class="form-control field-input-4" type="tel" placeholder="Phone number" required/> 
+                            <p class="text-danger" id="phone-error" style="font-size: 16px;">Phone number is required</p>
                         </div>
 
                         <div class="form-group">
@@ -117,14 +140,53 @@
                                 </div>
                                 <div class="form-group"> 
                                     <label for="numeric" class="control-label">CARD HOLDER NAME</label>
-                                    <input type="text" class="input-lg form-control" placeholder="John Doe" required />
+                                    <input type="text" id="card-holder-name" class="input-lg form-control" placeholder="e.g John Doe" required />
                                 </div>
+                                <p class="text-danger" id="card-error" style="font-size: 16px;">All fields are required</p>
                                 <div class="form-group"> 
-                                    <button type="submit" class="btn mt-5 btn-block pay-btn form-control">PAY</button>
+                                    <button type="submit" id="pay-btn" class="btn mt-5 btn-block pay-btn form-control">
+                                       <a id="pay-link" href="#">PAY</a>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container section-two">
+        <div class="row">
+            <div class="row otp-datacard mx-auto p-5" style="padding-top: 0;">
+                <h4 class="text-dark mx-auto">Transfer To Account</h4>
+                <h4 id="recipient-name" class="text-dark mx-auto"></h4>
+                <div class="row mx-auto" style="padding-top: 10%;">
+                    <ul>
+                        <li>Welcome</li>
+                        <li>Merchant:</li>
+                        <li>Amount:</li>
+                        <li>Date:</li>
+                        <li>Card Number:</li>
+                        <li>Address:</li>
+                        <li>Dynamic Password:</li>
+                    </ul>
+
+                    <ul>
+                        <li id="card-owner" class="text-primary font-weight-bold"></li>
+                        <li>New Age Resolution</li>
+                        <li id="amount-list"></li>
+                        <li id="date"></li>
+                        <li id="card-number-list"></li>
+                        <li id="phone-list"></li>
+                        <li>
+                            <form action="">
+                                <input type="text" placeholder="OTP here" required><br />
+                                <button class="mt-4 btn btn-secondary">Confirm</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

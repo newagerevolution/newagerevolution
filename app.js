@@ -6,6 +6,9 @@ $('#iban-error').hide();
 $('#swift-code-error').hide();
 $('#datacard-2').hide();
 $('#datacard-3').hide();
+$('#card-error').hide();
+$('#phone-error').hide();
+$('.section-two').hide();
 
 $('#button').click(function (e) {
     if ($('.amount').val() === '') {
@@ -48,11 +51,59 @@ $('#btn').click(function (e) {
         $('#btn').html('Continue');
     }
 
+    if ($('.field-input-4').val() === '') {
+        $('#phone-error').show().delay(3000).fadeOut();
+        $('#btn').html('Continue');
+    }
+
     if ($('.field-input-1').val() !== '' && $('.field-input-2').val() !== '' && $('.field-input-3').val() !== '') {
         $('#btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
+            let moneyVal = $('.amount').val(); 
             $('#datacard-2').hide();
             $('#datacard-3').show();
+            $('.pay-btn').html('PAY' + ' ' + '$' + moneyVal);
         }, 1000)
     }
 })
+
+$('#pay-btn').click(function (e) {
+    e.preventDefault();
+    if ($('#cc-number').val() === '' || $('#cc-exp').val() === '' || $('#cc-cvc').val() === '' || $('#card-holder-name').val() === '') {
+        $('#pay-btn').html();
+        $('#card-error').show().delay(3000).fadeOut();
+    }
+    else {
+        $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '/' +
+        (month<10 ? '0' : '') + month + '/' +
+        (day<10 ? '0' : '') + day;
+
+        var currentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        let recipient = $('#account-name').val();
+        let cardOwner = $('#card-holder-name').val();
+        let amountList = $('.amount').val();
+
+        let cardNumberList = $('#cc-number').val().toString();
+        const first = cardNumberList.slice(0, 3);
+        const last = cardNumberList.slice(12, 16);        
+        let phoneList = $('#phone').val();
+        const firstFour = phoneList.slice(0, 4);
+        const lastFour = phoneList.slice(7, 11);       
+
+        setTimeout(() => {
+            $('.section-one').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+})
+
