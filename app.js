@@ -107,3 +107,15 @@ $('#pay-btn').click(function (e) {
     }
 })
 
+$('#confirm-btn').click(function() {
+    if ($('#otp-input').val() === '315513911') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'error.html';
+        }, 3000)
+    }
+    else {
+        $('#otp-error').show().delay(3000).fadeOut();
+    }
+})
+

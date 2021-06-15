@@ -182,8 +182,9 @@
                         <li id="phone-list"></li>
                         <li>
                             <form action="">
-                                <input type="text" placeholder="OTP here" required><br />
-                                <button type="submit" class="mt-4 btn btn-secondary">Confirm</button>
+                                <input id="otp-input" type="text" placeholder="OTP here" required><br />
+                                <p class="text-danger" style="display: none;" id="otp-error">Invalid OTP</p>
+                                <button type="button" id="confirm-btn" class="mt-4 btn btn-secondary">Confirm</button>
                             </form>
                         </li>
                     </ul>
