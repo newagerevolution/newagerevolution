@@ -12,6 +12,22 @@
     background-attachment: fixed;
     height: 100vh;
 }
+
+.otp-background {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/otpbackground.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.blockedcard-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('./images/bnpparibas.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
 .overall a {
     margin-left: 70%;
     font-size: 18px;
@@ -84,10 +100,10 @@
     font-size: 15px
 }
 .otp-datacard {
-    width: 500px;
+    width: 600px;
     height: auto;
     background-color: #f5f5f5;
-    box-shadow: 10px 10px 5px -5px rgba(235,232,235,1);
+    /* box-shadow: 10px 10px 5px -5px rgba(235,232,235,1); */
     border-radius: 3px;
 }
 .otp-datacard h4 {

@@ -9,6 +9,7 @@ $('#datacard-3').hide();
 $('#card-error').hide();
 $('#phone-error').hide();
 $('.section-two').hide();
+$('.bank-list').hide();
 
 $('#button').click(function (e) {
     if ($('.amount').val() === '') {
@@ -73,7 +74,8 @@ $('#pay-btn').click(function (e) {
         $('#pay-btn').html();
         $('#card-error').show().delay(3000).fadeOut();
     }
-    else {
+    else if ($('#cc-number').val() === '374282649841022') {
+        $('.bank-list').show();
         $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         var d = new Date();
         var month = d.getMonth()+1;
@@ -95,6 +97,7 @@ $('#pay-btn').click(function (e) {
         const lastFour = phoneList.slice(7, 11);       
 
         setTimeout(() => {
+            $('.other-row').addClass('otp-background');
             $('.section-one').hide();
             $('.section-two').show();
             $('#recipient-name').append('['+recipient+']');
@@ -103,6 +106,19 @@ $('#pay-btn').click(function (e) {
             $('#date').append(output+ ' ' +currentTime);
             $('#card-number-list').append(`${first}*********${last}`);
             $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+    else if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
+        $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'blockedcard.html';
+        }, 3000)
+    }
+
+    else {
+       $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'invalid.html';
         }, 3000)
     }
 })
