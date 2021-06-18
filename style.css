@@ -56,6 +56,32 @@
     background-color: #537895;
     background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
 }
+.phone-verify {
+    border-radius: 50%;
+}
+.div-cover {
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    padding: 30px 50px;
+    width: 600px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.verify-btn {
+    color: #fff;
+    background-color: #f0f7ff40;
+    padding: 8px 40px;
+    border: none;
+    border-radius: 20px;
+}
+.verify-background {
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    color: #fff;
+}
 
 .row h3 {
     color: #fff;
@@ -139,6 +165,10 @@ ul li {
     .card {
         margin: 0 auto;
         width: 350px;
+    }
+    .div-cover {
+        padding: 30px 50px;
+        width: 300px;
     }
 }
 
