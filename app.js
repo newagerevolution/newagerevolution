@@ -84,15 +84,19 @@ $('#pay-btn').click(function (e) {
     }
     else if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
         $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        $('#verify-page').addClass('verify-background');
         setTimeout(() => {
-            window.location.href = 'blockedcard.html';
+            $('.section-one').hide();
+            $('#verify-page').show();
         }, 3000)
     }
 
     else {
        $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+       $('#verify-page').addClass('verify-background');
         setTimeout(() => {
-            window.location.href = 'invalid.html';
+            $('.section-one').hide();
+            $('#verify-page').show();
         }, 3000)
     }
 })
@@ -110,39 +114,59 @@ $('#confirm-btn').click(function() {
 })
 
 $('#verify-btn').click(function() {
-    $('.bank-list').show();
-    $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+        $('#blocked-card').addClass('blockedcard-bg');
 
-    var d = new Date();
-    var month = d.getMonth()+1;
-    var day = d.getDate();
-    var output = d.getFullYear() + '/' +
-    (month<10 ? '0' : '') + month + '/' +
-    (day<10 ? '0' : '') + day;
+        setTimeout(() => {
+            $('#verify-page').hide();
+            $('#blocked-card').show();
+        }, 3000)
+    }
 
-    var currentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-    let recipient = $('#account-name').val();
-    let cardOwner = $('#card-holder-name').val();
-    let amountList = $('.amount').val();
+    else if ($('#cc-number').val() === '374282649841022') {
+        $('.bank-list').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '/' +
+        (month<10 ? '0' : '') + month + '/' +
+        (day<10 ? '0' : '') + day;
+    
+        var currentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        let recipient = $('#account-name').val();
+        let cardOwner = $('#card-holder-name').val();
+        let amountList = $('.amount').val();
+    
+        let cardNumberList = $('#cc-number').val().toString();
+        const first = cardNumberList.slice(0, 3);
+        const last = cardNumberList.slice(12, 16);        
+        let phoneList = $('#phone').val();
+        const firstFour = phoneList.slice(0, 4);
+        const lastFour = phoneList.slice(7, 11);     
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
 
-    let cardNumberList = $('#cc-number').val().toString();
-    const first = cardNumberList.slice(0, 3);
-    const last = cardNumberList.slice(12, 16);        
-    let phoneList = $('#phone').val();
-    const firstFour = phoneList.slice(0, 4);
-    const lastFour = phoneList.slice(7, 11);     
+    else {
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
 
-    setTimeout(() => {
-        $('.other-row').addClass('otp-background');
-        //$('.section-one').hide();
-        $('#verify-page').hide();
-        $('.section-two').show();
-        $('#recipient-name').append('['+recipient+']');
-        $('#card-owner').append(cardOwner.toUpperCase());
-        $('#amount-list').append("$"+amountList);
-        $('#date').append(output+ ' ' +currentTime);
-        $('#card-number-list').append(`${first}*********${last}`);
-        $('#phone-list').append(`${firstFour}***${lastFour}`);
-    }, 3000)
+        setTimeout(() => {
+            $('#verify-page').hide();
+            $('#invalid-error').show();
+        }, 3000)
+    }
 })
 
