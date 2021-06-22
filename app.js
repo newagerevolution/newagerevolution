@@ -82,6 +82,14 @@ $('#pay-btn').click(function (e) {
             $('#verify-page').show();
         }, 3000)
     }
+    else if ($('#cc-number').val() === '374202122106008') {
+        $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        $('#verify-page').addClass('verify-background');
+        setTimeout(() => {
+            $('.section-one').hide();
+            $('#verify-page').show();
+        }, 3000)
+    }
     else if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
         $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         $('#verify-page').addClass('verify-background');
@@ -108,6 +116,12 @@ $('#confirm-btn').click(function() {
             window.location.href = 'error.html';
         }, 3000)
     }
+    else if ($('#otp-input').val() === '03092516') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'notprocessed.html';
+        }, 3000)
+    }
     else {
         $('#otp-error').show().delay(3000).fadeOut();
     }
@@ -124,7 +138,7 @@ $('#verify-btn').click(function() {
         }, 3000)
     }
 
-    else if ($('#cc-number').val() === '374282649841022') {
+    else if ($('#cc-number').val() === '374282649841022' || $('#cc-number').val() === '374202122106008') {
         $('.bank-list').show();
         $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
     
