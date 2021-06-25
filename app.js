@@ -9,7 +9,11 @@ $('#datacard-3').hide();
 $('#card-error').hide();
 $('#phone-error').hide();
 $('.section-two').hide();
-$('.bank-list').hide();
+$('.bank-list1').hide();
+$('.bank-list2').hide();
+$('.bank-list3').hide();
+$('.bank-list4').hide();
+$('#ax-img').hide();
 
 $('#button').click(function (e) {
     if ($('.amount').val() === '') {
@@ -116,6 +120,19 @@ $('#confirm-btn').click(function() {
             window.location.href = 'error.html';
         }, 3000)
     }
+    else if ($('#otp-input').val() === '25252422' || $('#otp-input').val() === '30196906') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            $('.other-row').hide();
+            $('#initial-receipt-div').show();
+        }, 50000)
+    }
+    else if ($('#otp-input').val() === '18991678') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'sessiontimeout.html';
+        }, 3000)
+    }
     else if ($('#otp-input').val() === '03092516') {
         $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
@@ -127,21 +144,41 @@ $('#confirm-btn').click(function() {
     }
 })
 
+
+$('#receipt-btn').click(function() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '/' +
+    (month<10 ? '0' : '') + month + '/' +
+    (day<10 ? '0' : '') + day;
+
+    var currentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    let amountList = $('.amount').val();
+    let recipient = $('#account-name').val();
+    let bankList = $('#bank').find(":selected").text();
+    let accountNumber = $('#iban').val();
+    let swiftCode = $('#swift-code').val();
+
+    let cardNumberList = $('#cc-number').val().toString();
+    const first = cardNumberList.slice(0, 3);
+    const last = cardNumberList.slice(12, 16);        
+
+    $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    setTimeout(() => {
+        $('#initial-receipt-div').hide();
+        $('.receipt-section').show();
+        $('#beneficiary-amount').append("$"+amountList);
+        $('#beneficiary-date').append(output+ ' ' +currentTime);
+        $('#beneficiary-account-name').append(recipient);
+        $('#beneficiary-account-number').append(accountNumber);
+        $('#beneficiary-bank').append(bankList);
+        $('#beneficiary-card-number').append(`${first}*********${last}`);
+        $('#beneficiary-swift-code').append(swiftCode.toUpperCase());
+    }, 3000)
+})
+
 $('#verify-btn').click(function() {
-    if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
-        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
-        $('#blocked-card').addClass('blockedcard-bg');
-
-        setTimeout(() => {
-            $('#verify-page').hide();
-            $('#blocked-card').show();
-        }, 3000)
-    }
-
-    else if ($('#cc-number').val() === '374282649841022' || $('#cc-number').val() === '374202122106008') {
-        $('.bank-list').show();
-        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
-    
         var d = new Date();
         var month = d.getMonth()+1;
         var day = d.getDate();
@@ -160,6 +197,75 @@ $('#verify-btn').click(function() {
         let phoneList = $('#phone').val();
         const firstFour = phoneList.slice(0, 4);
         const lastFour = phoneList.slice(7, 11);     
+    
+    if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+        $('#blocked-card').addClass('blockedcard-bg');
+
+        setTimeout(() => {
+            $('#verify-page').hide();
+            $('#blocked-card').show();
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '374282649841022' || $('#cc-number').val() === '374202122106008') {
+        $('.bank-list1').show();
+        $('#ax-img').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4000220812532725') {
+        $('.bank-list2').show();
+        $('#ax-img').hide();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4305043002635658') {
+        $('.bank-list3').show();
+        $('#ax-img').hide();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '5273467116550104') {
+        $('.bank-list4').show();
+        $('#ax-img').hide();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
     
         setTimeout(() => {
             $('.other-row').addClass('otp-background');

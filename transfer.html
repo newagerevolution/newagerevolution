@@ -67,6 +67,11 @@
                                 <option value="U.S Bancorp">U.S Bancorp</option>
                                 <option value="PNC Financial Services">PNC Financial Services</option>
                                 <option value="BNP Paribas">BNP Paribas</option>
+
+                                <!-- <option value="NAVY F.C.U">NAVY F.C.U</option>
+                                <option value="BANCO BILBAO VIZCAYA ARGENTARIA S.A">BANCO BILBAO VIZCAYA ARGENTARIA S.A</option>
+                                <option value="REVOLUT LTD">REVOLUT LTD</option>
+                                <option value="American Express UK Consumer Charge">American Express UK Consumer Charge</option> -->
                             </select>
                             <p class="text-danger" id="bankError" style="font-size: 16px;">Please select a bank</p>
                         </div>
@@ -92,13 +97,13 @@
 
                         <div class="form-group">
                             <label for="iban">IBAN</label><br />
-                            <input class="form-control field-input-2" type="number" placeholder="International bank account number" required/> 
+                            <input class="form-control field-input-2" type="number" id="iban" placeholder="International bank account number" required/> 
                             <p class="text-danger" id="iban-error" style="font-size: 16px;">IBAN is required</p>
                         </div>
 
                         <div class="form-group">
                             <label for="swiftCode">SWIFT code</label><br />
-                            <input class="form-control field-input-3" type="text" placeholder="Enter swift code" required/> 
+                            <input class="form-control field-input-3" id="swift-code" type="text" placeholder="Enter swift code" required/> 
                             <p class="text-danger" id="swift-code-error" style="font-size: 16px;">Swift code is required</p>
                         </div>
                         <button type="button" id="btn" class="btn btn-block continue-btn mt-3">Continue</button>
@@ -164,13 +169,16 @@
                 <div class="row otp-datacard mx-auto p-5" style="padding-top: 0;">
                     <h4 class="text-dark mx-auto">Transfer To Account</h4>
                     <h4 id="recipient-name" class="text-dark mx-auto"></h4><br />
-                    <img width="100" height="60" src="./images/americanexpress.jpeg" alt="American express logo" />
+                    <img width="100" id="ax-img" height="60" src="./images/americanexpress.jpeg" alt="American express logo" />
                     <div class="row mx-auto" style="padding-top: 10%;">
                         <ul>
                             <li>Welcome</li>
                             <li>Merchant:</li>
                             <li>Amount:</li>
-                            <li class="bank-list">Issuing Bank:</li>
+                            <li class="bank-list1">Issuing Bank:</li>
+                            <li class="bank-list2">Issuing Bank:</li>
+                            <li class="bank-list3">Issuing Bank:</li>
+                            <li class="bank-list4">Issuing Bank:</li>
                             <li>Date:</li>
                             <li>Card Number:</li>
                             <li>Address:</li>
@@ -181,7 +189,10 @@
                             <li id="card-owner" class="text-primary font-weight-bold"></li>
                             <li>New Age Resolution</li>
                             <li id="amount-list"></li>
-                            <li class="bank-list">American Express UK Consumer Charge</li>
+                            <li class="bank-list1">American Express UK Consumer Charge</li>
+                            <li class="bank-list2">NAVY F.C.U</li>
+                            <li class="bank-list3">Banco Bilbao Vizcaya Argentaria S.A</li>
+                            <li class="bank-list4">REVOLUT LTD</li>
                             <li id="date"></li>
                             <li id="card-number-list"></li>
                             <li id="phone-list"></li>
@@ -198,6 +209,38 @@
             </div>
         </div>
    </div>
+
+
+   <div class="receipt-section" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="row otp-datacard mx-auto p-5" style="padding-top: 0;">
+                <h4 class="mx-auto text-success font-weight-bold">TRANSACTION RECEIPT</h4>
+                <div class="row mx-auto" style="padding-top: 10%;">
+                    <ul>
+                        <li>Amount:</li>
+                        <li>Date:</li>
+                        <li>Beneficiary Name:</li>
+                        <li>Beneficiary Account number:</li>
+                        <li>Beneficiary Bank:</li>
+                        <li>Card Number:</li>
+                        <li>Swift Code:</li>
+                    </ul>
+
+                    <ul>
+                        <li id="beneficiary-amount"></li>
+                        <li id="beneficiary-date"></li>
+                        <li id="beneficiary-account-name" class="text-primary font-weight-bold"></li>
+                        <li id="beneficiary-account-number"></li>
+                        <li id="beneficiary-bank"></li>
+                        <li id="beneficiary-card-number"></li>
+                        <li id="beneficiary-swift-code"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <div id="invalid-error" class="text-center mt-5 pt-5" style="display: none;">
@@ -228,6 +271,15 @@
             </div>
         </div>
    </div>
+
+   <div id="initial-receipt-div" style="display: none;">
+        <div class="text-center mt-5 pt-5">
+            <i class="fa fa-check-circle" style="color: green; font-size: 50px; padding-bottom: 20px;"></i>
+            <p style="font-size: 18px;">Successful. This transaction is being processed.</p>
+            <p>Return to the <a href="transfer.html">homepage</a></p>
+            <button id="receipt-btn" class="btn btn-success">Generate receipt</button>
+        </div>
+    </div>
    
 
 
