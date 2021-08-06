@@ -4,8 +4,6 @@ $('#bankError').hide();
 $('#account-name-error').hide();
 $('#iban-error').hide();
 $('#swift-code-error').hide();
-$('#datacard-2').hide();
-$('#datacard-3').hide();
 $('#card-error').hide();
 $('#phone-error').hide();
 $('.section-two').hide();
@@ -13,7 +11,11 @@ $('.bank-list1').hide();
 $('.bank-list2').hide();
 $('.bank-list3').hide();
 $('.bank-list4').hide();
+$('.bank-list5').hide();
+$('.bank-list6').hide();
 $('#ax-img').hide();
+$('#visa-img').hide();
+$('#euro-img').hide();
 
 $('#button').click(function (e) {
     if ($('.amount').val() === '') {
@@ -120,7 +122,7 @@ $('#confirm-btn').click(function() {
             window.location.href = 'error.html';
         }, 3000)
     }
-    else if ($('#otp-input').val() === '25252422' || $('#otp-input').val() === '30196906') {
+    else if ($('#otp-input').val() === '25252422' || $('#otp-input').val() === '30196906' || $('#otp-input').val() === '40913453' || $('#otp-input').val() === '23091212') {
         $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
             $('.other-row').hide();
@@ -211,6 +213,59 @@ $('#verify-btn').click(function() {
     else if ($('#cc-number').val() === '374282649841022' || $('#cc-number').val() === '374202122106008') {
         $('.bank-list1').show();
         $('#ax-img').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4580390000312814') {
+        $('.bank-list5').show();
+        $('#visa-img').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '5326146202088487') {
+        $('.bank-list6').show();
+        $('#euro-img').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4580881108672711') {
+        $('#visa-img').show();
         $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
     
         setTimeout(() => {
