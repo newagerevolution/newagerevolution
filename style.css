@@ -21,6 +21,15 @@
     height: 100vh;
 }
 
+.nar-logo {
+    font-family: 'Style Script', cursive;
+    color: #bc005b !important;
+    font-size: 50px !important;
+    font-weight: 600;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
 .blockedcard-bg {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('./images/bnpparibas.jpeg');
     background-size: cover;

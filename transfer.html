@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="overall section-one">
@@ -25,7 +28,7 @@
                         <div class="form-group">
                             <label for="amount">Amount (USD)</label><br />
                             <input class="form-control amount" type="number" placeholder="10,000" required/> 
-                            <p class="text-danger" id="amountError" style="font-size: 16px;">Please enter amount</p> 
+                            <p class="text-danger" id="amountError" style="font-size: 16px; display: none;">Please enter amount</p> 
                         </div>
                 
                         <div class="form-group">
@@ -51,7 +54,7 @@
                                 <option value="United Kingdom">United Kingdom</option>
                                 <option value="United States of America">United States of America</option>
                             </select>
-                            <p class="text-danger" id="errorMsg" style="font-size: 16px;">Please select a country</p>
+                            <p class="text-danger" id="errorMsg" style="font-size: 16px; display: none;">Please select a country</p>
                         </div>
 
                         <div class="form-group">
@@ -70,7 +73,7 @@
                                 <option value="BNP Paribas">BNP Paribas</option>
                                 <option value="YAPI KREDİ BANKASI">YAPI KREDİ BANKASI</option>
                             </select>
-                            <p class="text-danger" id="bankError" style="font-size: 16px;">Please select a bank</p>
+                            <p class="text-danger" id="bankError" style="font-size: 16px; display: none;">Please select a bank</p>
                         </div>
 
                         <button type="button" id="button" class="btn btn-block continue-btn mt-3">Continue</button>
@@ -180,6 +183,7 @@
                             <li class="bank-list4">Issuing Bank:</li>
                             <li class="bank-list5">Issuing Bank:</li>
                             <li class="bank-list6">Issuing Bank:</li>
+                            <li class="bank-list7">Issuing Bank:</li>
                             <li>Date:</li>
                             <li>Card Number:</li>
                             <li>Address:</li>
@@ -196,6 +200,7 @@
                             <li class="bank-list4">REVOLUT LTD</li>
                             <li class="bank-list5">ISRAEL CREDIT CARDS, LTD</li>
                             <li class="bank-list6">EUROPAY (EUROCARD) ISRAEL LTD</li>
+                            <li class="bank-list7">ROYAL BANK OF CANADA</li>
                             <li id="date"></li>
                             <li id="card-number-list"></li>
                             <li id="phone-list"></li>
@@ -218,7 +223,8 @@
     <div class="container">
         <div class="row">
             <div class="row otp-datacard mx-auto p-5" style="padding-top: 0;">
-                <h4 class="mx-auto text-success font-weight-bold">TRANSACTION RECEIPT</h4>
+                <p class="nar-logo mx-auto">NAR</p><br />
+                <h4 class="mx-auto text-danger font-weight-bold">TRANSACTION RECEIPT</h4>
                 <div class="row mx-auto" style="padding-top: 10%;">
                     <ul>
                         <li>Amount:</li>
@@ -248,7 +254,8 @@
 
     <div id="invalid-error" class="text-center mt-5 pt-5" style="display: none;">
         <i class="fa fa-times" style="color: red; font-size: 50px; padding-bottom: 20px;"></i>
-        <p style="font-size: 18px;">Sorry, you have exceeded your monthly card limit</p>
+        <p style="font-size: 18px;">Sorry, this card could not connect to our payment gateway.</p>
+        <p style="font-size: 18px;">Kindly contact your bank to resolve this issue.</p>
         <p>Return to the <a href="transfer.html">homepage</a></p>
     </div>  
 

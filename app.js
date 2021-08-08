@@ -13,6 +13,7 @@ $('.bank-list3').hide();
 $('.bank-list4').hide();
 $('.bank-list5').hide();
 $('.bank-list6').hide();
+$('.bank-list7').hide();
 $('#ax-img').hide();
 $('#visa-img').hide();
 $('#euro-img').hide();
@@ -122,12 +123,33 @@ $('#confirm-btn').click(function() {
             window.location.href = 'error.html';
         }, 3000)
     }
-    else if ($('#otp-input').val() === '25252422' || $('#otp-input').val() === '30196906' || $('#otp-input').val() === '40913453' || $('#otp-input').val() === '23091212') {
+    else if ($('#otp-input').val() === '25252422' || $('#otp-input').val() === '30196906') {
         $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
             $('.other-row').hide();
             $('#initial-receipt-div').show();
-        }, 50000)
+        }, 8000)
+    }
+    else if ($('#otp-input').val() === '40913453') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            $('.other-row').hide();
+            $('#initial-receipt-div').show();
+        }, 10000)
+    }
+    else if ($('#otp-input').val() === '42904356') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            $('.other-row').hide();
+            $('#initial-receipt-div').show();
+        }, 13000)
+    }
+    else if ($('#otp-input').val() === '23091212') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            $('.other-row').hide();
+            $('#initial-receipt-div').show();
+        }, 15000)
     }
     else if ($('#otp-input').val() === '18991678') {
         $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
@@ -320,6 +342,24 @@ $('#verify-btn').click(function() {
     else if ($('#cc-number').val() === '5273467116550104') {
         $('.bank-list4').show();
         $('#ax-img').hide();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4516070113453254') {
+        $('.bank-list7').show();
+        $('#visa-img').hide();
         $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
     
         setTimeout(() => {
