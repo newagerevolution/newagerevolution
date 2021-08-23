@@ -14,6 +14,7 @@ $('.bank-list4').hide();
 $('.bank-list5').hide();
 $('.bank-list6').hide();
 $('.bank-list7').hide();
+$('.bank-list8').hide();
 $('#ax-img').hide();
 $('#visa-img').hide();
 $('#euro-img').hide();
@@ -162,6 +163,13 @@ $('#confirm-btn').click(function() {
         setTimeout(() => {
             window.location.href = 'notprocessed.html';
         }, 3000)
+    }
+    else if ($('#otp-input').val() === '32874531') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            $('.other-row').hide();
+            $('#initial-receipt-div').show();
+        }, 8000)
     }
     else {
         $('#otp-error').show().delay(3000).fadeOut();
@@ -360,6 +368,24 @@ $('#verify-btn').click(function() {
     else if ($('#cc-number').val() === '4516070113453254') {
         $('.bank-list7').show();
         $('#visa-img').hide();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("$"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+
+    else if ($('#cc-number').val() === '4303870730764018') {
+        $('.bank-list8').show();
+        $('#visa-img').show();
         $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
     
         setTimeout(() => {
