@@ -15,9 +15,11 @@ $('.bank-list5').hide();
 $('.bank-list6').hide();
 $('.bank-list7').hide();
 $('.bank-list8').hide();
+$('.bank-list9').hide();
 $('#ax-img').hide();
 $('#visa-img').hide();
 $('#euro-img').hide();
+$('#first-img').hide();
 
 $('#button').click(function (e) {
     if ($('.amount').val() === '') {
@@ -65,7 +67,17 @@ $('#btn').click(function (e) {
         $('#btn').html('Continue');
     }
 
-    if ($('.field-input-1').val() !== '' && $('.field-input-2').val() !== '' && $('.field-input-3').val() !== '') {
+    if ($('#country').find(":selected").text() === 'Nigeria') {
+        $('#btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            let moneyVal = $('.amount').val(); 
+            $('#datacard-2').hide();
+            $('#datacard-3').show();
+            $('.pay-btn').html('PAY' + ' ' + '₦' + moneyVal);
+        }, 1000)
+    }
+
+    if ($('.field-input-1').val() !== '' && $('.field-input-2').val() !== '' && $('.field-input-3').val() !== '' && $('#country').find(":selected").text() !== 'Nigeria') {
         $('#btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
             let moneyVal = $('.amount').val(); 
@@ -98,6 +110,8 @@ $('#pay-btn').click(function (e) {
             $('#verify-page').show();
         }, 3000)
     }
+
+
     else if ($('#cc-number').val() === '4074619916081797' && $('#cc-exp').val() === '02/23' && $('#cc-cvc').val() === '622') {
         $('#pay-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         $('#verify-page').addClass('verify-background');
@@ -162,6 +176,12 @@ $('#confirm-btn').click(function() {
         $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
         setTimeout(() => {
             window.location.href = 'notprocessed.html';
+        }, 3000)
+    }
+    else if ($('#otp-input').val() === '87564536') {
+        $('#confirm-btn').html('<img src="./images/loader.gif" style="height:20px;" />');
+        setTimeout(() => {
+            window.location.href = 'insufficient.html';
         }, 3000)
     }
     else if ($('#otp-input').val() === '32874531') {
@@ -276,6 +296,24 @@ $('#verify-btn').click(function() {
         }, 3000)
     }
 
+    else if ($('#cc-number').val() === '5399237039364738') {
+        $('.bank-list9').show();
+        $('#first-img').show();
+        $(this).html('<img src="./images/loader.gif" style="height:20px;" />');
+    
+        setTimeout(() => {
+            $('.other-row').addClass('otp-background');
+            $('#verify-page').hide();
+            $('.section-two').show();
+            $('#recipient-name').append('['+recipient+']');
+            $('#card-owner').append(cardOwner.toUpperCase());
+            $('#amount-list').append("₦"+amountList);
+            $('#date').append(output+ ' ' +currentTime);
+            $('#card-number-list').append(`${first}*********${last}`);
+            $('#phone-list').append(`${firstFour}***${lastFour}`);
+        }, 3000)
+    }
+    
     else if ($('#cc-number').val() === '5326146202088487') {
         $('.bank-list6').show();
         $('#euro-img').show();

